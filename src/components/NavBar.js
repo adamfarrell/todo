@@ -12,7 +12,7 @@ export default class NavBar extends Component {
          </div>
          <ul className="nav__menu">
           <li><Link to="/">Home</Link></li>
-          {/* <li><Link to="Lists"></Link></li> */}
+          <li><Link to="/about">About</Link></li>
          </ul>
        </nav>
     );

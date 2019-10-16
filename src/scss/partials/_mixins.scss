@@ -1,0 +1,42 @@
+@mixin media-query($min, $max: "") {
+  @if $min== "sm-only" {
+    $min: get-breakpoint("sm");
+    $max: get-breakpoint("med") - 1px;
+  } @else if $min== "med-only" {
+    $min: get-breakpoint("med");
+    $max: get-breakpoint("lrg") - 1px;
+  } @else if $min== "lrg-only" {
+    $min: get-breakpoint("lrg");
+    $max: get-breakpoint("xlrg") - 1px;
+  } @else if $min== "xlrg-only" {
+    $min: get-breakpoint("xlrg");
+    $max: get-breakpoint("xxlrg") - 1px;
+  } @else if $min== "xxlrg-only" {
+    $min: get-breakpoint("xxlrg");
+  }
+
+  // this only really works if this matches a key in the breakpoints map
+
+  @if type-of($min) == type-of("string") {
+    $min: get-breakpoint($min);
+  }
+
+  @if type-of($max) == type-of("string") {
+    $max: get-breakpoint($max) - 1px;
+  }
+
+  // if we get through all of the other tests, then we will have proccessed all of the presets we expect.
+  // which means that $min and $max (if it's defined) should be actual width values in px.
+  
+  @if $max== "" and not unitless($min) {
+    @media screen and (min-width: em($min)) {
+      @content;
+    }
+  } @else if not unitless($min) and not unitless($max) {
+    @media screen and (min-width: em($min)) and (max-width: em($max)) {
+      @content;
+    }
+  } @else {
+    @error "Unexpected form in inputs";
+  }
+}

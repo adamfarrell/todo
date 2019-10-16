@@ -1,0 +1,51 @@
+@import "./variables";
+
+@function tint($color, $percent) {
+  @return mix(white, $color, $percent);
+}
+
+@function shade($color, $percent) {
+  @return mix(black, $color, $percent);
+}
+
+@function get-from-map($map, $key) {
+  @if map-has-key($map, $key) {
+    @return map-get($map, $key);
+  }
+
+  @warn "`#{$key}` in map doesn't exist doesn't exist";
+
+  @return null;
+}
+
+@function em($pixels, $context: 16px) {
+  @if unitless($pixels) {
+    $pixels: $pixels * 1px;
+  }
+
+  @if unitless($context) {
+    $context: $context * 1px;
+  }
+
+  @return $pixels / $context * 1em;
+}
+
+
+
+
+// getters
+@function get-color($key) {
+  @return get-from-map($colors, $key);
+}
+
+@function get-text-color($key) {
+  @return get-from-map($text-colors, $key);
+}
+
+@function get-default($key) {
+  @return get-from-map($defaults, $key);
+}
+
+@function get-breakpoint($key) {
+  @return get-from-map($breakpoints, $key);
+}

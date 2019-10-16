@@ -1,0 +1,11 @@
+@import "partials/fonts";
+
+// order important load
+@import "partials/variables";
+@import "partials/functions";
+@import "partials/mixins";
+
+// blocks
+@import "blocks/nav";
+
+@import "partials/globals";

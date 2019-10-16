@@ -1,0 +1,26 @@
+$defaults: (
+  'max-width': 60rem,
+  'padding': 1rem
+);
+
+$colors: (
+  'primary':      #598392,
+  'secondary':    #2a2b2e,
+  'complement-1': #56cbf9,
+  'complement-2': #8d6346,
+  'complement-3': #fbf9ff
+);
+
+$text-colors: (
+  'primary': #fbf9ff,
+  'link':    #57cbf9,
+  'header':  #598392
+);
+
+$breakpoints: (
+  'sm': 0px,
+  'med': 640px,
+  'lrg': 1024px,
+  'xlrg': 1440px,
+  'xxlrg': 1920px
+);
